@@ -1,0 +1,31 @@
+#!/bin/sh
+set -e
+if test "$CONFIGURATION" = "Debug"; then :
+  cd /Users/jonathanchen/Desktop/pbrt-v3/src/ext/openexr
+  /opt/homebrew/Cellar/cmake/3.28.3/bin/cmake -E copy_directory /Users/jonathanchen/Desktop/pbrt-v3/src/ext/openexr/IlmBase/Half/ /Users/jonathanchen/Desktop/pbrt-v3/src/ext/openexr/OpenEXR/IlmImf/
+  /opt/homebrew/Cellar/cmake/3.28.3/bin/cmake -E copy_directory /Users/jonathanchen/Desktop/pbrt-v3/src/ext/openexr/IlmBase/IlmThread/ /Users/jonathanchen/Desktop/pbrt-v3/src/ext/openexr/OpenEXR/IlmImf/
+  /opt/homebrew/Cellar/cmake/3.28.3/bin/cmake -E copy_directory /Users/jonathanchen/Desktop/pbrt-v3/src/ext/openexr/IlmBase/Iex/ /Users/jonathanchen/Desktop/pbrt-v3/src/ext/openexr/OpenEXR/IlmImf/
+  /opt/homebrew/Cellar/cmake/3.28.3/bin/cmake -E copy_directory /Users/jonathanchen/Desktop/pbrt-v3/src/ext/openexr/IlmBase/Imath/ /Users/jonathanchen/Desktop/pbrt-v3/src/ext/openexr/OpenEXR/IlmImf/
+fi
+if test "$CONFIGURATION" = "Release"; then :
+  cd /Users/jonathanchen/Desktop/pbrt-v3/src/ext/openexr
+  /opt/homebrew/Cellar/cmake/3.28.3/bin/cmake -E copy_directory /Users/jonathanchen/Desktop/pbrt-v3/src/ext/openexr/IlmBase/Half/ /Users/jonathanchen/Desktop/pbrt-v3/src/ext/openexr/OpenEXR/IlmImf/
+  /opt/homebrew/Cellar/cmake/3.28.3/bin/cmake -E copy_directory /Users/jonathanchen/Desktop/pbrt-v3/src/ext/openexr/IlmBase/IlmThread/ /Users/jonathanchen/Desktop/pbrt-v3/src/ext/openexr/OpenEXR/IlmImf/
+  /opt/homebrew/Cellar/cmake/3.28.3/bin/cmake -E copy_directory /Users/jonathanchen/Desktop/pbrt-v3/src/ext/openexr/IlmBase/Iex/ /Users/jonathanchen/Desktop/pbrt-v3/src/ext/openexr/OpenEXR/IlmImf/
+  /opt/homebrew/Cellar/cmake/3.28.3/bin/cmake -E copy_directory /Users/jonathanchen/Desktop/pbrt-v3/src/ext/openexr/IlmBase/Imath/ /Users/jonathanchen/Desktop/pbrt-v3/src/ext/openexr/OpenEXR/IlmImf/
+fi
+if test "$CONFIGURATION" = "MinSizeRel"; then :
+  cd /Users/jonathanchen/Desktop/pbrt-v3/src/ext/openexr
+  /opt/homebrew/Cellar/cmake/3.28.3/bin/cmake -E copy_directory /Users/jonathanchen/Desktop/pbrt-v3/src/ext/openexr/IlmBase/Half/ /Users/jonathanchen/Desktop/pbrt-v3/src/ext/openexr/OpenEXR/IlmImf/
+  /opt/homebrew/Cellar/cmake/3.28.3/bin/cmake -E copy_directory /Users/jonathanchen/Desktop/pbrt-v3/src/ext/openexr/IlmBase/IlmThread/ /Users/jonathanchen/Desktop/pbrt-v3/src/ext/openexr/OpenEXR/IlmImf/
+  /opt/homebrew/Cellar/cmake/3.28.3/bin/cmake -E copy_directory /Users/jonathanchen/Desktop/pbrt-v3/src/ext/openexr/IlmBase/Iex/ /Users/jonathanchen/Desktop/pbrt-v3/src/ext/openexr/OpenEXR/IlmImf/
+  /opt/homebrew/Cellar/cmake/3.28.3/bin/cmake -E copy_directory /Users/jonathanchen/Desktop/pbrt-v3/src/ext/openexr/IlmBase/Imath/ /Users/jonathanchen/Desktop/pbrt-v3/src/ext/openexr/OpenEXR/IlmImf/
+fi
+if test "$CONFIGURATION" = "RelWithDebInfo"; then :
+  cd /Users/jonathanchen/Desktop/pbrt-v3/src/ext/openexr
+  /opt/homebrew/Cellar/cmake/3.28.3/bin/cmake -E copy_directory /Users/jonathanchen/Desktop/pbrt-v3/src/ext/openexr/IlmBase/Half/ /Users/jonathanchen/Desktop/pbrt-v3/src/ext/openexr/OpenEXR/IlmImf/
+  /opt/homebrew/Cellar/cmake/3.28.3/bin/cmake -E copy_directory /Users/jonathanchen/Desktop/pbrt-v3/src/ext/openexr/IlmBase/IlmThread/ /Users/jonathanchen/Desktop/pbrt-v3/src/ext/openexr/OpenEXR/IlmImf/
+  /opt/homebrew/Cellar/cmake/3.28.3/bin/cmake -E copy_directory /Users/jonathanchen/Desktop/pbrt-v3/src/ext/openexr/IlmBase/Iex/ /Users/jonathanchen/Desktop/pbrt-v3/src/ext/openexr/OpenEXR/IlmImf/
+  /opt/homebrew/Cellar/cmake/3.28.3/bin/cmake -E copy_directory /Users/jonathanchen/Desktop/pbrt-v3/src/ext/openexr/IlmBase/Imath/ /Users/jonathanchen/Desktop/pbrt-v3/src/ext/openexr/OpenEXR/IlmImf/
+fi
+

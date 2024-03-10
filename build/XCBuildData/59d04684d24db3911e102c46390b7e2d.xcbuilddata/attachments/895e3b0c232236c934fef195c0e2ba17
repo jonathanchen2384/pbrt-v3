@@ -1,0 +1,19 @@
+#!/bin/sh
+set -e
+if test "$CONFIGURATION" = "Debug"; then :
+  cd /Users/jonathanchen/Desktop/pbrt-v3/src/ext/openexr/OpenEXR/IlmImf
+  /Users/jonathanchen/Desktop/pbrt-v3/src/ext/openexr/OpenEXR/IlmImf/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/b44ExpLogTable > /Users/jonathanchen/Desktop/pbrt-v3/src/ext/openexr/OpenEXR/IlmImf/b44ExpLogTable.h
+fi
+if test "$CONFIGURATION" = "Release"; then :
+  cd /Users/jonathanchen/Desktop/pbrt-v3/src/ext/openexr/OpenEXR/IlmImf
+  /Users/jonathanchen/Desktop/pbrt-v3/src/ext/openexr/OpenEXR/IlmImf/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/b44ExpLogTable > /Users/jonathanchen/Desktop/pbrt-v3/src/ext/openexr/OpenEXR/IlmImf/b44ExpLogTable.h
+fi
+if test "$CONFIGURATION" = "MinSizeRel"; then :
+  cd /Users/jonathanchen/Desktop/pbrt-v3/src/ext/openexr/OpenEXR/IlmImf
+  /Users/jonathanchen/Desktop/pbrt-v3/src/ext/openexr/OpenEXR/IlmImf/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/b44ExpLogTable > /Users/jonathanchen/Desktop/pbrt-v3/src/ext/openexr/OpenEXR/IlmImf/b44ExpLogTable.h
+fi
+if test "$CONFIGURATION" = "RelWithDebInfo"; then :
+  cd /Users/jonathanchen/Desktop/pbrt-v3/src/ext/openexr/OpenEXR/IlmImf
+  /Users/jonathanchen/Desktop/pbrt-v3/src/ext/openexr/OpenEXR/IlmImf/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/b44ExpLogTable > /Users/jonathanchen/Desktop/pbrt-v3/src/ext/openexr/OpenEXR/IlmImf/b44ExpLogTable.h
+fi
+
