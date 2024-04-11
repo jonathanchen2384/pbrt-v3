@@ -909,6 +909,7 @@ CMakeFiles/pbrt.dir/src/core/api.cpp.o: \
   /Users/jonathanchen/Desktop/pbrt-v3/src/shapes/nurbs.h \
   /Users/jonathanchen/Desktop/pbrt-v3/src/shapes/paraboloid.h \
   /Users/jonathanchen/Desktop/pbrt-v3/src/shapes/sphere.h \
+  /Users/jonathanchen/Desktop/pbrt-v3/src/shapes/raymarcher.h \
   /Users/jonathanchen/Desktop/pbrt-v3/src/shapes/triangle.h \
   /Users/jonathanchen/Desktop/pbrt-v3/src/shapes/plymesh.h \
   /Users/jonathanchen/Desktop/pbrt-v3/src/textures/bilerp.h \

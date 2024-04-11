@@ -356,7 +356,7 @@ static inline int parseInt(const char *&token) {
 //   float   = ( decimal , END ) | ( decimal , ("E" | "e") , integer , END ) ;
 //
 //  Valid strings are for example:
-//   -0	 +3.1417e+2  -0.0E-3  1.0324  -1.41   11e2
+//   -0     +3.1417e+2  -0.0E-3  1.0324  -1.41   11e2
 //
 // If the parsing is a success, result is set to the parsed value and true
 // is returned.
@@ -685,31 +685,31 @@ static bool exportFaceGroupToShape(
   }
 
   if (normals_calculation && shape.mesh.normals.empty()) {
-	  const size_t nIndexs = shape.mesh.indices.size();
-	  if (nIndexs % 3 == 0) {
-		  shape.mesh.normals.resize(shape.mesh.positions.size());
-		  for (size_t iIndices = 0; iIndices < nIndexs; iIndices += 3) {
-			  float3 v1, v2, v3;
-			  memcpy(&v1, &shape.mesh.positions[shape.mesh.indices[iIndices] * 3], sizeof(float3));
-			  memcpy(&v2, &shape.mesh.positions[shape.mesh.indices[iIndices + 1] * 3], sizeof(float3));
-			  memcpy(&v3, &shape.mesh.positions[shape.mesh.indices[iIndices + 2] * 3], sizeof(float3));
+      const size_t nIndexs = shape.mesh.indices.size();
+      if (nIndexs % 3 == 0) {
+          shape.mesh.normals.resize(shape.mesh.positions.size());
+          for (size_t iIndices = 0; iIndices < nIndexs; iIndices += 3) {
+              float3 v1, v2, v3;
+              memcpy(&v1, &shape.mesh.positions[shape.mesh.indices[iIndices] * 3], sizeof(float3));
+              memcpy(&v2, &shape.mesh.positions[shape.mesh.indices[iIndices + 1] * 3], sizeof(float3));
+              memcpy(&v3, &shape.mesh.positions[shape.mesh.indices[iIndices + 2] * 3], sizeof(float3));
 
-			  float3 v12(v1, v2);
-			  float3 v13(v1, v3);
+              float3 v12(v1, v2);
+              float3 v13(v1, v3);
 
-			  float3 normal = v12.crossproduct(v13);
-			  normal.normalize();
+              float3 normal = v12.crossproduct(v13);
+              normal.normalize();
 
-			  memcpy(&shape.mesh.normals[shape.mesh.indices[iIndices] * 3], &normal, sizeof(float3));
-			  memcpy(&shape.mesh.normals[shape.mesh.indices[iIndices + 1] * 3], &normal, sizeof(float3));
-			  memcpy(&shape.mesh.normals[shape.mesh.indices[iIndices + 2] * 3], &normal, sizeof(float3));
-		  }
-	  } else {
+              memcpy(&shape.mesh.normals[shape.mesh.indices[iIndices] * 3], &normal, sizeof(float3));
+              memcpy(&shape.mesh.normals[shape.mesh.indices[iIndices + 1] * 3], &normal, sizeof(float3));
+              memcpy(&shape.mesh.normals[shape.mesh.indices[iIndices + 2] * 3], &normal, sizeof(float3));
+          }
+      } else {
 
-		  std::stringstream ss;
-		  ss << "WARN: The shape " << name << " does not have a topology of triangles, therfore the normals calculation could not be performed. Select the tinyobj::triangulation flag for this object." << std::endl;
-		  err += ss.str();
-	  }
+          std::stringstream ss;
+          ss << "WARN: The shape " << name << " does not have a topology of triangles, therfore the normals calculation could not be performed. Select the tinyobj::triangulation flag for this object." << std::endl;
+          err += ss.str();
+      }
   }
 
   shape.name = name;

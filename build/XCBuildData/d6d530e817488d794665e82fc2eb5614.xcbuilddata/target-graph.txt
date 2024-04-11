@@ -1,4 +1,0 @@
-Target dependency graph (2 targets)
-Target 'ftest' in project 'PBRT-V3'
-➜ Explicit dependency on target 'Ptex_static' in project 'PBRT-V3'
-Target 'Ptex_static' in project 'PBRT-V3' (no dependencies)
