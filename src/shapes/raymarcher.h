@@ -62,8 +62,12 @@ class RayMarcher : public Shape {
           thetaMax(std::acos(Clamp(std::max(zMin, zMax) / radius, -1, 1))),
           phiMax(Radians(Clamp(phiMax, 0, 360))) {}
     Bounds3f ObjectBound() const;
+    
     bool Intersect(const Ray &ray, Float *tHit, SurfaceInteraction *isect,
                    bool testAlphaTexture) const;
+    
+    bool RayMarcher::IntersectP(const Ray &r, bool testAlphaTexture) const;
+    
     Vector3f GetNormalRM(const Point3f &pos, float eps,
                              const Vector3f &defaultNormal) const;
 

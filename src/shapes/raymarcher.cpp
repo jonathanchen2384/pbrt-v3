@@ -72,6 +72,29 @@ bool RayMarcher::Intersect(const Ray &r, Float *tHit,
     printf(counter);
     counter++;
     
+    /*
+     Q: 
+        The numbers are likely not in order.
+        Why and how to we remedy this for debugging purposes?
+     
+     A:
+        The numbers are likely not in order
+        due to the multi threading process causing a race condition
+        among the three lines of code.
+        
+        One method of resolving this issue without hindering
+        the process of the threads and conditions would be
+        to utilize locks to ensure the variable is incrementing correctly
+        without the interference. Through the use of locks,
+        deadlocks must also be taken into consideration to prevent
+        the threads from getting locked altogether.
+     
+        For debugging purposes:
+        you may also set the amount of threads used by pbrt to
+        the value "1" by doing "--nthreads" in the commandline,
+        so only run thread exists and the increment will
+        not be affected by race conditions.
+     */
     
     // Part 6
     
@@ -167,24 +190,63 @@ bool RayMarcher::Intersect(const Ray &r, Float *tHit,
     *isect = (*ObjectToWorld)(SurfaceInteraction(pHit, pError, Point2f(u, v), -ray.d, dpdu, dpdv, dndu, dndv, ray.time, this));
     *tHit = (Float)tShapeHit;
 
-    return hit;
-    
-    /*
 	if (hit && tHit != nullptr && isect != nullptr) {
 		// This where you return your SurfaceInteraction structure and your tHit
 		// Important Note: You must check for null pointer as Intersect is called 
 		// by IntersectP() with null values for these parameters.
- 
+        
+        for ( int i = 0; i < MAX_RAY_STEPS; i ++)
+        {
+            float dist = sdf(dir);
+            if (dist < DIST_THRESHOLD)
+            {
+                hit = true;
+                break;
+            }
+            
+            else if (dist > DIST_THRESHOLD)
+            {
+                break;
+            }
+            
+            else {
+                dir = dir + r.d*dist;
+            }
+        }
 	}
-    return hit;*/
+    return hit;
 }
+
+bool RayMarcher::IntersectP(const Ray &r, bool testAlphaTexture) const {
+    Ray ray = (*WorldToObject)(r);
+
+    Float tMin, tMax;
+    if (!ObjectBound().IntersectP(ray, &tMin, &tMax))
+        return false;
+
+    Float t = tMin;
+    Vector3f dir = Normalize(ray.d);
+
+    for (int i = 0; i < MAX_RAY_STEPS; i++) {
+        Float dist = sdf(ray(t));
+        if (dist < DIST_THRESHOLD)
+            return true;
+        t += dist;
+        if (t >= tMax || t >= MAX_DISTANCE)
+            break;
+    }
+
+    return false;
+}
+
+
 
 //  Template Method
 //
 Float RayMarcher::sdf(const Point3f &pos) const {
     // Part 5:
-    Float distanceToCenter = Vector3f(pos.x, pos.y, pos.z).Length();
-    Float signedDistance = ((*WorldToObject)(distanceToCenter)) - radius;
+    Float distanceToCenter = ((*WorldToObject)(Vector3f(pos.x, pos.y, pos.z))).Length();
+    Float signedDistance = distanceToCenter - radius;
     return signedDistance;
 }
 
@@ -193,7 +255,19 @@ Float RayMarcher::sdf(const Point3f &pos) const {
 //  Note if the normal you calculate has zero length, return the defaultNormal
 //
 Vector3f RayMarcher::GetNormalRM( const Point3f &p, float eps, const Vector3f &defaultNormal) const {
- 
+    float sdfCenter = sdf(pos);
+    if (sdfCenter == 0)
+        return defaultNormal;
+
+    Vector3f grad(
+           sdf(Point3f(pos.x + eps, pos.y, pos.z)) - sdf(Point3f(pos.x - eps, pos.y, pos.z)),
+           sdf(Point3f(pos.x, pos.y + eps, pos.z)) - sdf(Point3f(pos.x, pos.y - eps, pos.z)),
+           sdf(Point3f(pos.x, pos.y, pos.z + eps)) - sdf(Point3f(pos.x, pos.y, pos.z - eps))
+    );
+
+    grad = Normalize(grad);
+
+    return grad;
 }
 
 
@@ -211,8 +285,6 @@ Interaction RayMarcher::Sample(const Interaction &ref, const Point2f &u,
     LOG(FATAL) << "RayMarcher::Sample not implemented.";
     return Interaction();
 }
-
-
 
 std::shared_ptr<Shape> CreateRayMarcherShape(const Transform *o2w,
                                          const Transform *w2o,
