@@ -880,7 +880,7 @@ CMakeFiles/pbrt_test.dir/src/tests/analytic_scenes.cpp.o: \
   /Users/jonathanchen/Desktop/pbrt-v3/src/samplers/sobol.h \
   /Users/jonathanchen/Desktop/pbrt-v3/src/samplers/zerotwosequence.h \
   /Users/jonathanchen/Desktop/pbrt-v3/src/shapes/sphere.h \
-  /Users/jonathanchen/Desktop/pbrt-v3/src/textures/constant.h \
   /Users/jonathanchen/Desktop/pbrt-v3/src/core/texture.h \
+  /Users/jonathanchen/Desktop/pbrt-v3/src/textures/constant.h \
   /Users/jonathanchen/Desktop/pbrt-v3/src/core/paramset.h \
   /Users/jonathanchen/Desktop/pbrt-v3/src/core/fileutil.h

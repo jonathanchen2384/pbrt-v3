@@ -822,11 +822,11 @@ CMakeFiles/pbrt.dir/src/shapes/sphere.cpp.o: \
   /Users/jonathanchen/Desktop/pbrt-v3/src/core/material.h \
   /Users/jonathanchen/Desktop/pbrt-v3/src/core/memory.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk/usr/include/c++/v1/list \
+  /Users/jonathanchen/Desktop/pbrt-v3/src/core/texture.h \
   /Users/jonathanchen/Desktop/pbrt-v3/src/core/sampling.h \
   /Users/jonathanchen/Desktop/pbrt-v3/src/core/rng.h \
   /Users/jonathanchen/Desktop/pbrt-v3/src/core/paramset.h \
   /Users/jonathanchen/Desktop/pbrt-v3/src/core/fileutil.h \
-  /Users/jonathanchen/Desktop/pbrt-v3/src/core/texture.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk/usr/include/c++/v1/map \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk/usr/include/c++/v1/__tree \
   /Users/jonathanchen/Desktop/pbrt-v3/src/core/efloat.h \

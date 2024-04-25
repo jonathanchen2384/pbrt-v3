@@ -16021,6 +16021,7 @@ CMakeFiles/pbrt_test.dir/src/tests/shapes.cpp.o: /Users/jonathanchen/Desktop/pbr
   /Users/jonathanchen/Desktop/pbrt-v3/src/core/spectrum.h \
   /Users/jonathanchen/Desktop/pbrt-v3/src/core/stats.h \
   /Users/jonathanchen/Desktop/pbrt-v3/src/core/stringprint.h \
+  /Users/jonathanchen/Desktop/pbrt-v3/src/core/texture.h \
   /Users/jonathanchen/Desktop/pbrt-v3/src/core/transform.h \
   /Users/jonathanchen/Desktop/pbrt-v3/src/ext/glog/src/glog/log_severity.h \
   /Users/jonathanchen/Desktop/pbrt-v3/src/shapes/cone.h \

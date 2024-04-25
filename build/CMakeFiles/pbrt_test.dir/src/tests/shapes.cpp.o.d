@@ -847,6 +847,7 @@ CMakeFiles/pbrt_test.dir/src/tests/shapes.cpp.o: \
   /Users/jonathanchen/Desktop/pbrt-v3/src/shapes/disk.h \
   /Users/jonathanchen/Desktop/pbrt-v3/src/shapes/paraboloid.h \
   /Users/jonathanchen/Desktop/pbrt-v3/src/shapes/sphere.h \
+  /Users/jonathanchen/Desktop/pbrt-v3/src/core/texture.h \
   /Users/jonathanchen/Desktop/pbrt-v3/src/shapes/triangle.h \
   /Users/jonathanchen/Desktop/pbrt-v3/src/core/stats.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk/usr/include/c++/v1/map \
