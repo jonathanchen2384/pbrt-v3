@@ -41,9 +41,69 @@
 // shapes/sphere.h*
 #include "shape.h"
 
+#include "pbrt.h"
+#include "transform.h"
+#include "texture.h"
+
 namespace pbrt {
 
-// Sphere Declarations
+class HeightFieldGeneration : public Shape {
+public:
+    // HeightField Public Methods
+    HeightFieldGeneration(const Transform *ObjectToWorld, const Transform *WorldToObject,
+                         bool reverseOrientation, Float width, Float height, int nOctaves, Float freq, Float amplitude)
+        : Shape(ObjectToWorld, WorldToObject, reverseOrientation),
+          width(width), height(height), nOctaves(nOctaves), freq(freq), amplitude(amplitude) {}
+
+    // Declared Functions
+    Bounds3f ObjectBound() const;
+    bool Intersect(const Ray &ray, Float *tHit, SurfaceInteraction *isect,
+                   bool testAlphaTexture) const;
+    bool IntersectP(const Ray &ray, bool testAlphaTexture) const;
+    Float Area() const;
+    Interaction Sample(const Point2f &u, Float *pdf) const;
+    Float Pdf(const Interaction &ref, const Vector3f &wi) const;
+
+    // Noise
+    float OctaveNoise(Point3f p, int nOctaves, Float freq, Float amplitude) const;
+
+private:
+    // Private data members
+    const Float width, height;
+    const int nOctaves;
+    const Float freq, amplitude;
+};
+
+// Function declaration for creating HeightFieldGeneration shape
+std::shared_ptr<Shape> CreateHeightFieldGenerationShape(const Transform *o2w,
+                                     const Transform *w2o,
+                                     bool reverseOrientation,
+                                     const ParamSet &params);
+
+
+ float OctaveNoise(const Point3f &p, int nOctaves, float freq, float amplitude);
+
+/*
+ 
+ 
+ ----------------------------------------------------------------------------------
+ ----------------------------------------------------------------------------------
+ ----------------------------------------------------------------------------------
+ ----------------------------------------------------------------------------------
+ 
+ 
+
+ 
+ ----------------------------------------------------------------------------------
+ ----------------------------------------------------------------------------------
+ ----------------------------------------------------------------------------------
+ ----------------------------------------------------------------------------------
+ 
+ 
+ */
+
+
+
 class Sphere : public Shape {
   public:
     // Sphere Public Methods
@@ -75,11 +135,16 @@ class Sphere : public Shape {
     const Float thetaMin, thetaMax, phiMax;
 };
 
+
+
 std::shared_ptr<Shape> CreateSphereShape(const Transform *o2w,
                                          const Transform *w2o,
                                          bool reverseOrientation,
                                          const ParamSet &params);
 
+
 }  // namespace pbrt
+
+
 
 #endif  // PBRT_SHAPES_SPHERE_H
