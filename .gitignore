@@ -3,3 +3,5 @@ src/build
 src/bin
 src/objs
 .sconsign.dblite
+*.exr
+build/All exr files with fun stuff/model-4-8k.png
